@@ -28,6 +28,14 @@ p "#{tp Dog.all}"
   Stroll.create!(date: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now), dogsitter: Dogsitter.find(rand(1..10)), dog: Dog.find(rand(1..10)), city_id:1)
 end
 puts "10 rdv ont crees"
+
+10.times do |i|
+    10.times do |e|
+        if Dog.find(i + 1).city == Dogsitter.find(e + 1).city
+            Stroll.create!(dog: Dog.find(i + 1), dogsitter: Dogsitter.find(e + 1))
+        end
+    end
+end
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
